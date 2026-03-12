@@ -7,6 +7,6 @@ import com.example.demo.Model.JugadorVolley;
 
 
 @Repository
-public interface IJugadorVolleyRepository extends JpaRepository<JugadorVolley, Integer> {
+public interface IJugadorVolleyRepository extends JpaRepository<JugadorVolley, Long> {
 
 }

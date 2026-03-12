@@ -10,10 +10,10 @@ public interface IJugadorVolleyService {
 
     public boolean GuardarJugador(JugadorVolley jugadorVolley);
 
-    public JugadorVolley BuscarJugadorById(int id);
+    public JugadorVolley BuscarJugadorById(Long id);
 
     public boolean ActualizarJugador(JugadorVolley jugadorVolley);
 
-    public boolean EliminarJugadorById(int id);
+    public boolean EliminarJugadorById(Long id);
 
 }

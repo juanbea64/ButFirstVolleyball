@@ -8,8 +8,8 @@ public class JugadorVolley {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long jugadorID;
-    @Column(nullable = false, unique = true)
+    private Long jugadorID;
+    @Column(nullable = false)
     private String nombreJugador;
     private int edadJugador;
     private String raza;
@@ -19,6 +19,10 @@ public class JugadorVolley {
     private double peso;
     private String equipo;
     private int numeroCamiseta;
+
+    // Constructor sin argumentos requerido por JPA
+    public JugadorVolley() {
+    }
 
     public Long getJugadorID() {
         return jugadorID;

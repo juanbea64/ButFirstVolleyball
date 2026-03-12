@@ -39,7 +39,7 @@ public class JugadorVolleyController {
         String mensaje;
         
         // Detecta si es creación (sin ID) o actualización (con ID)
-        if (jugadorVoley.getJugadorID() == null || jugadorVoley.getJugadorID() == 0) {
+        if (jugadorVoley.getJugadorID() == null) {
             resultado = jugadorVolleyService.GuardarJugador(jugadorVoley);
             mensaje = "Jugador creado correctamente";
         } else {
@@ -48,7 +48,8 @@ public class JugadorVolleyController {
         }
         
         if(!resultado){
-            attributes.addFlashAttribute("error", "Error al guardar/actualizar el jugador");
+            model.addAttribute("jugadorVoley", jugadorVoley);
+            model.addAttribute("error", "Error al guardar el jugador. Verifique que el nombre no esté duplicado.");
             return "nuevo";
         }
         attributes.addFlashAttribute("success", mensaje);
@@ -56,7 +57,7 @@ public class JugadorVolleyController {
     }
 
     @GetMapping("/editar/{id}")
-    public String Editar(@PathVariable("id") int id, Model model, RedirectAttributes attributes) {
+    public String Editar(@PathVariable("id") Long id, Model model, RedirectAttributes attributes) {
         JugadorVolley jugadorVoley = jugadorVolleyService.BuscarJugadorById(id);
         if (jugadorVoley != null) {
             model.addAttribute("jugadorVoley", jugadorVoley);
@@ -67,7 +68,7 @@ public class JugadorVolleyController {
     }
 
     @GetMapping("/eliminar/{id}")
-    public String Eliminar(@PathVariable("id") int id, RedirectAttributes attributes) {
+    public String Eliminar(@PathVariable("id") Long id, RedirectAttributes attributes) {
         boolean resultado = jugadorVolleyService.EliminarJugadorById(id);
         if(resultado == false){
             attributes.addFlashAttribute("error", "Error al eliminar el jugador con id"+id);

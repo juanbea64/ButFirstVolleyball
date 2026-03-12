@@ -32,7 +32,7 @@ public class ServiceImpl implements IJugadorVolleyService {
     }
 
     @Override
-    public JugadorVolley BuscarJugadorById(int id) {
+    public JugadorVolley BuscarJugadorById(Long id) {
         return jugadorVolleyRepository.findById(id).orElse(null); // Busca un jugador por su ID, retorna null si no se encuentra
     }
 
@@ -48,7 +48,7 @@ public class ServiceImpl implements IJugadorVolleyService {
     }
 
     @Override
-    public boolean EliminarJugadorById(int id) {
+    public boolean EliminarJugadorById(Long id) {
         try {
             jugadorVolleyRepository.deleteById(id); // Elimina un jugador por su ID
             return true; // Retorna true si el jugador se elimina correctamente
