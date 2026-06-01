@@ -17,14 +17,7 @@ interface NavItem { path: string; label: string; icon: string; }
     <aside class="sidebar">
 
       <div class="sidebar__logo">
-        <div class="logo-row">
-          <app-logo [size]="44"></app-logo>
-          <div class="logo-text">
-            <span class="brand-top">But First,</span>
-            <span class="brand-main">Volleyball</span>
-          </div>
-        </div>
-        <p class="tagline">Eleva tu mente, eleva tu juego</p>
+        <app-logo [size]="190"></app-logo>
       </div>
 
       <div class="sidebar__player">
@@ -68,11 +61,7 @@ interface NavItem { path: string; label: string; icon: string; }
     <!-- ── Mobile Top Bar ────────────────────────────────────── -->
     <header class="mobile-header">
       <div class="header-brand">
-        <app-logo [size]="32"></app-logo>
-        <div class="brand-text" style="margin-left:.5rem;">
-          <span class="top">But First, </span>
-          <span class="main">Volleyball</span>
-        </div>
+        <app-logo [h]="36"></app-logo>
       </div>
       <div class="header-actions">
         <button class="icon-btn" (click)="themeService.toggle()" title="Toggle dark mode">

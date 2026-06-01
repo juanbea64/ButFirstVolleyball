@@ -540,19 +540,13 @@ $lg: 1024px;
   }
 
   &__logo {
-    padding: 1.25rem 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,.1);
+    background: #ffffff;
+    padding: 1.1rem 1.25rem;
     display: flex;
-    flex-direction: column;
-    gap: .5rem;
-
-    .logo-row { display: flex; align-items: center; gap: .75rem; }
-    .logo-text {
-      display: flex; flex-direction: column;
-      .brand-top  { font-family:'Montserrat',sans-serif; font-weight:900; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); line-height:1; }
-      .brand-main { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1rem; letter-spacing:.1em; text-transform:uppercase; color:#fff; line-height:1.1; }
-    }
-    .tagline { font-size: .7rem; color: rgba(255,255,255,.45); font-style: italic; }
+    align-items: center;
+    justify-content: center;
+    border-bottom: 3px solid var(--accent);   // línea dorada separa logo del nav
+    flex-shrink: 0;
   }
 
   &__player {
@@ -624,37 +618,42 @@ $lg: 1024px;
   @include lg { display: none; }
   position: fixed; top: 0; left: 0; right: 0;
   height: var(--topbar-h);
-  background: var(--primary);
+  background: #fff;                  // fondo blanco para que el logo PNG se vea bien
+  border-bottom: 2px solid var(--accent);
   z-index: 30;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-sm);
   transition: background var(--dur) var(--ease);
 
-  .header-brand {
-    display: flex; align-items: center; gap: .5rem;
-    .brand-text {
-      span.top  { font-family:'Montserrat',sans-serif; font-weight:900; font-size:.75rem; letter-spacing:.15em; text-transform:uppercase; color:var(--accent); }
-      span.main { font-family:'Montserrat',sans-serif; font-weight:900; font-size:.75rem; letter-spacing:.12em; text-transform:uppercase; color:#fff; }
-    }
+  [data-theme="dark"] & {
+    background: var(--surface);
+    border-bottom-color: var(--accent);
   }
-  .header-actions { display: flex; align-items: center; gap: .5rem; }
+
+  .header-brand {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    max-height: 44px;
+  }
+  .header-actions { display: flex; align-items: center; gap: .4rem; }
   .avatar-badge {
     width: 2rem; height: 2rem;
     border-radius: var(--r-full);
-    background: var(--accent);
-    color: var(--primary);
+    background: var(--primary);
+    color: #fff;
     display: flex; align-items: center; justify-content: center;
-    font-weight: 900; font-size: .75rem;
+    font-weight: 900; font-size: .72rem;
     font-family: 'Montserrat', sans-serif;
   }
   .icon-btn {
-    color: rgba(255,255,255,.6);
+    color: var(--primary);
     padding: .35rem;
     border-radius: var(--r-sm);
-    &:hover { color: #fff; background: rgba(255,255,255,.1); }
+    &:hover { background: rgba(65,90,128,.08); }
     transition: all var(--dur) var(--ease);
   }
 }
@@ -897,3 +896,56 @@ canvas { max-width: 100%; }
 .hidden-sm  { @media (max-width: 639px)  { display: none !important; } }
 .hidden-md  { @media (max-width: 767px)  { display: none !important; } }
 .hidden-lg  { @media (max-width: 1023px) { display: none !important; } }
+
+// ── 23. CHART WRAPPERS RESPONSIVE ────────────────────────────
+// Úsalos en vez de inline height en los canvas containers
+.chart-sm  { height: 9rem;  @include sm { height: 10rem; } @include lg { height: 11rem; } }
+.chart-md  { height: 10rem; @include sm { height: 11rem; } @include lg { height: 13rem; } }
+.chart-lg  { height: 11rem; @include sm { height: 13rem; } @include lg { height: 16rem; } }
+
+// ── 24. MOBILE GLOBAL OVERRIDES ──────────────────────────────
+@media (max-width: 639px) {
+
+  // Cards con menos padding en mobile
+  .card        { padding: .875rem; }
+  .stat-card   { padding: .875rem; }
+
+  // Contenedor de página sin tanto margen
+  .page-container { padding: .75rem; }
+
+  // Header: título más pequeño en teléfonos muy pequeños
+  .page-title { font-size: 1.3rem !important; }
+
+  // page-header: botón ocupa todo el ancho en mobile
+  .page-header .btn-primary,
+  .page-header .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  // Stat card: valor numérico más compacto
+  .stat-card__value { font-size: 1.6rem; }
+
+  // mobile-header: logo tiene fondo blanco para que el PNG se vea bien
+  .mobile-header { background: #fff; }
+  .mobile-header .icon-btn { color: var(--primary); }
+  .mobile-header .icon-btn:hover { background: rgba(65,90,128,.08); }
+  .mobile-header .avatar-badge {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  // Bottom nav: tipografía más compacta
+  .bottom-nav-item { font-size: .55rem; }
+  .bottom-nav-item i { font-size: 1.05rem; }
+
+  // Tablas: reducir padding de celdas
+  .data-table th,
+  .data-table td { padding: .55rem .5rem; font-size: .78rem; }
+
+  // Sección title: sin tanto margin-bottom
+  .section-title { margin-bottom: .75rem; }
+
+  // Progress bar track más fina
+  .progress-bar-track { height: .5rem; }
+}

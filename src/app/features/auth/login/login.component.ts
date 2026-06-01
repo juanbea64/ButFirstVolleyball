@@ -23,11 +23,7 @@ import { LogoComponent } from '../../../shared/components/logo/logo.component';
 
         <!-- Logo + Brand -->
         <div class="login-brand">
-          <app-logo [size]="72"></app-logo>
-          <div class="login-brand__text">
-            <h1 class="login-brand__top">But First,</h1>
-            <h2 class="login-brand__name">Volleyball</h2>
-          </div>
+          <app-logo [size]="260"></app-logo>
         </div>
         <p class="login-tagline">Eleva tu mente, eleva tu juego</p>
 
@@ -161,29 +157,26 @@ import { LogoComponent } from '../../../shared/components/logo/logo.component';
     </div>
   `,
   styles: [`
+    /* ── Fondo claro ────────────────────────────────────────────── */
     .login-page {
       min-height: 100vh;
-      background: linear-gradient(135deg, #415A80 0%, #2a3d5a 60%, #1a2b3f 100%);
+      background: linear-gradient(150deg, #EEF1F8 0%, #F4F6FB 50%, #EEEFF2 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
+      padding: 2rem 1rem;
       position: relative;
       overflow: hidden;
     }
-    .login-blobs {
-      position: absolute; inset: 0; pointer-events: none;
-    }
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: .18;
-    }
-    .blob-1 { width:380px;height:380px; background:#FEE589; top:-80px; right:-80px; }
-    .blob-2 { width:300px;height:300px; background:#B1E4D3; bottom:-80px; left:-60px; }
-    .blob-3 { width:200px;height:200px; background:#6A7FA7; top:40%; left:30%; opacity:.08; }
 
+    /* ── Blobs decorativos (suaves sobre fondo claro) ───────────── */
+    .login-blobs { position:absolute; inset:0; pointer-events:none; }
+    .blob        { position:absolute; border-radius:50%; filter:blur(80px); }
+    .blob-1 { width:500px; height:500px; background:#415A80; opacity:.07; top:-150px; right:-120px; }
+    .blob-2 { width:380px; height:380px; background:#B1E4D3; opacity:.35; bottom:-120px; left:-100px; }
+    .blob-3 { width:260px; height:260px; background:#FEE589; opacity:.30; top:30%; left:60%; }
+
+    /* ── Wrapper central ────────────────────────────────────────── */
     .login-wrapper {
       position: relative;
       width: 100%;
@@ -191,53 +184,113 @@ import { LogoComponent } from '../../../shared/components/logo/logo.component';
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 1rem;
+      gap: .75rem;
     }
+
+    /* ── Área del logo — sin filtros, el PNG se ve limpio en fondo claro ── */
     .login-brand {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 1rem;
     }
-    .login-brand__text { display:flex; flex-direction:column; }
-    .login-brand__top  { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1rem; letter-spacing:.2em; text-transform:uppercase; color:#FEE589; line-height:1; margin:0; }
-    .login-brand__name { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.65rem; letter-spacing:.12em; text-transform:uppercase; color:#fff; line-height:1.1; margin:0; }
-    .login-tagline { font-size:.8rem; color:rgba(255,255,255,.5); font-style:italic; margin:0; }
 
+    /* ── Tagline — oscuro y legible sobre fondo claro ───────────── */
+    .login-tagline {
+      font-size: .82rem;
+      font-style: italic;
+      font-family: 'Montserrat', sans-serif;
+      color: #6A7FA7;
+      letter-spacing: .04em;
+      margin: 0 0 .5rem;
+    }
+
+    /* ── Tarjeta oscura (contraste con fondo claro) ────────────── */
     .login-card {
       width: 100%;
-      background: var(--surface);
+      background: #1E2B3A;
       border-radius: 1.5rem;
-      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      box-shadow:
+        0 20px 60px rgba(30,43,58,.30),
+        0 4px 16px  rgba(30,43,58,.20);
       overflow: hidden;
+      border: 1px solid rgba(255,255,255,.06);
     }
-    .login-tabs {
-      display: flex;
-    }
+
+    /* ── Tabs ───────────────────────────────────────────────────── */
+    .login-tabs { display:flex; }
     .login-tab {
       flex: 1;
       padding: 1rem;
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      font-size: .78rem;
+      font-size: .76rem;
       text-transform: uppercase;
-      letter-spacing: .08em;
-      color: var(--text-muted);
-      background: var(--surface-2);
+      letter-spacing: .09em;
+      color: rgba(255,255,255,.4);
+      background: rgba(255,255,255,.04);
       border: none;
       cursor: pointer;
-      transition: all 200ms;
+      transition: background 200ms, color 200ms;
       &.active {
-        background: var(--primary);
-        color: #fff;
+        background: #FEE589;
+        color: #1E2B3A;
       }
     }
-    .login-form-body { padding: 1.75rem; }
-    .login-form { display:flex; flex-direction:column; gap:1.1rem; }
 
+    /* ── Cuerpo del formulario ──────────────────────────────────── */
+    .login-form-body { padding: 1.75rem; }
+    .login-form      { display:flex; flex-direction:column; gap:1.1rem; }
+
+    /* ── Pie de página ──────────────────────────────────────────── */
     .login-footer {
-      font-size: .72rem;
-      color: rgba(255,255,255,.3);
+      font-size: .7rem;
+      color: #8fa0b8;
       text-align: center;
+      margin-top: .25rem;
+    }
+
+    /* ── Inputs sobre fondo oscuro ──────────────────────────────── */
+    .login-card .input-field {
+      background: rgba(255,255,255,.07) !important;
+      border: 1.5px solid rgba(255,255,255,.12) !important;
+      color: #fff !important;
+    }
+    .login-card .input-field::placeholder { color: rgba(255,255,255,.3) !important; }
+    .login-card .input-field:focus {
+      background: rgba(255,255,255,.11) !important;
+      border-color: #FEE589 !important;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(254,229,137,.15) !important;
+    }
+    .login-card .form-label {
+      color: rgba(255,255,255,.65) !important;
+      font-weight: 700;
+    }
+    /* icono de candado/sobre en los labels */
+    .login-card .form-label i { color: #FEE589 !important; }
+    .login-card select.input-field {
+      color: #fff !important;
+      option { background: #1E2B3A; color: #fff; }
+    }
+
+    /* Botón toggle mostrar/ocultar contraseña */
+    .login-card button[type="button"] { color: rgba(255,255,255,.45) !important; }
+
+    /* Alert credenciales de prueba */
+    .login-card .alert-info {
+      background: rgba(254,229,137,.08) !important;
+      border: 1px solid rgba(254,229,137,.2) !important;
+      color: #FEE589 !important;
+      border-radius: .75rem;
+    }
+    .login-card .alert-info p { color: rgba(255,255,255,.75) !important; }
+    .login-card .alert-info p:first-child { color: #FEE589 !important; }
+
+    .login-card .alert-error {
+      background: rgba(248,113,113,.1) !important;
+      border: 1px solid rgba(248,113,113,.25) !important;
+      color: #fca5a5 !important;
+      border-radius: .75rem;
     }
   `],
 })

@@ -77,7 +77,7 @@ Chart.register(...registerables);
                 <i class="fa-solid fa-chart-line" style="color:var(--accent-dark);"></i>
                 Evolución Semanal (Efectividad %)
               </p>
-              <div style="height:13rem;"><canvas #weeklyChart></canvas></div>
+              <div class="chart-md"><canvas #weeklyChart></canvas></div>
             </div>
 
             <!-- Session type donut -->
@@ -86,7 +86,7 @@ Chart.register(...registerables);
                 <i class="fa-solid fa-chart-pie" style="color:var(--accent-dark);"></i>
                 Tipo de Sesión
               </p>
-              <div style="height:10rem;display:flex;align-items:center;justify-content:center;">
+              <div class="chart-sm" style="display:flex;align-items:center;justify-content:center;">
                 <canvas #typeChart></canvas>
               </div>
               <div style="display:flex;justify-content:center;gap:1rem;margin-top:.5rem;">
@@ -108,7 +108,7 @@ Chart.register(...registerables);
                 <i class="fa-solid fa-chart-bar" style="color:var(--accent-dark);"></i>
                 Acciones Técnicas por Categoría
               </p>
-              <div style="height:13rem;"><canvas #actionsChart></canvas></div>
+              <div class="chart-md"><canvas #actionsChart></canvas></div>
             </div>
 
             <!-- Active goals -->

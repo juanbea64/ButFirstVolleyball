@@ -59,7 +59,7 @@ const CHART_COLORS = ['#415A80','#6A7FA7','#7DCFB8','#D4B843','#B1E4D3','#2a3d5a
               <i class="fa-solid fa-chart-bar" style="color:var(--accent-dark);"></i>
               Comparativo de Efectividad por Categoría (%)
             </p>
-            <div style="height:16rem;"><canvas #compChart></canvas></div>
+            <div class="chart-lg"><canvas #compChart></canvas></div>
           </div>
 
           <!-- Doughnuts per category -->
@@ -140,7 +140,7 @@ const CHART_COLORS = ['#415A80','#6A7FA7','#7DCFB8','#D4B843','#B1E4D3','#2a3d5a
                 <i class="fa-solid fa-chart-line" style="color:var(--accent-dark);"></i>
                 Tendencia Mensual
               </p>
-              <div style="height:16rem;"><canvas #trendChart></canvas></div>
+              <div class="chart-lg"><canvas #trendChart></canvas></div>
             </div>
           </div>
 
